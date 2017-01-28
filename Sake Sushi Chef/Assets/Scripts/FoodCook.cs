@@ -7,6 +7,9 @@ public class FoodCook : MonoBehaviour {
 	public bool onGrill = true;
 	public int occupiedSlot = 100;
 
+
+	public bool mouseControlled = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -23,9 +26,19 @@ public class FoodCook : MonoBehaviour {
 			}
 		}
 		if (occupiedSlot == GamePlay.selectedFood) {
+			mouseControlled = true;
 			Vector2 mouseposition = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			Vector2 objPosition = Camera.main.ScreenToWorldPoint (mouseposition);
 			transform.position = new Vector2(objPosition.x, objPosition.y - 0.2f);
+			if (gameObject.name == "burger patty(Clone)") {
+				GamePlay.currentMeal = "hamburger";
+			}
+			else if (gameObject.name == "hotdog(Clone)") {
+				GamePlay.currentMeal = "hotdog";
+			}
+		}
+		if (GamePlay.deleteFood && mouseControlled) {
+			Destroy (gameObject);
 		}
 	}
 
