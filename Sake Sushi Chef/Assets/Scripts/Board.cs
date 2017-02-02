@@ -2,6 +2,17 @@
 using System.Collections;
 
 public class board : MonoBehaviour {
+    GameObject tuna;
+    GameObject tuna;
+    GameObject yellow_tail;
+    GameObject avacado;
+    GameObject shrimp;
+    GameObject crab;
+    GameObject rice;
+    GameObject nori;
+    GameObject teriyaki;
+    GameObject chilli_oil;
+
     GameObject cutting_board;
     private GameObject[] ingredients;
     private const int NUM_INGREDIENTS = 9;
