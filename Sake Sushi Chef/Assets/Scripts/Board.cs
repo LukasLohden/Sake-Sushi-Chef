@@ -70,4 +70,16 @@ public class Board : MonoBehaviour {
 
 
     }
+
+    public void clearBoard()
+    {
+        foreach(GameObject item in ingredients)
+        {
+            Destroy(item);
+        }
+        for(int i=0; i < NUM_INGREDIENTS; i++)
+        {
+            ingredients[i] = null;
+        }
+    }
 }
