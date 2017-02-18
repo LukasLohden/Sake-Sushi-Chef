@@ -23,13 +23,16 @@ public class Board : MonoBehaviour {
     public GameObject board_chilli_oil;
 
     public GameObject cutting_board;
+    public GameObject onBoardIng;
+    public GameObject ingObj;
+
     private GameObject[] ingredients;
     private const int NUM_INGREDIENTS = 9;
     private int ingredient_count;
 	// Use this for initialization
 	void Start () {
         ingredients = new GameObject[NUM_INGREDIENTS];
-        ingredient_count = 2;
+        ingredient_count = 0;
         for (int i = 0; i < NUM_INGREDIENTS; i++){
             ingredients[i] = null;
         }
@@ -42,41 +45,29 @@ public class Board : MonoBehaviour {
 	}
 
     public void showIngredient (GameObject g) {
-        if (g==tuna)
+        int num_child = ingObj.transform.childCount;
+        for(int i=0; i < num_child; i++)
         {
-            board_tuna.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
+            //print(ingObj.transform.GetChild(i));
+            print("i= " + i);
+            print("g=" + g);
+            if(ingObj.transform.GetChild(i).gameObject == g)
+            {
+                print("    in first if");
+                print("    IngCount=" + ingredient_count);
+                if (ingredient_count < NUM_INGREDIENTS)
+                {
+                    print("        in second if");
+                    ingredients[ingredient_count] = (GameObject)Instantiate(g, gameObject.transform);
+                    ingredients[ingredient_count].GetComponent<SpriteRenderer>().sortingOrder = ingredient_count + 2;
+                    ingredients[ingredient_count].transform.position = gameObject.transform.position;
+                    ingredient_count++;
+                    print("        " + ingredients);
+                }
+                break;
+            }
         }
-        else if(g == yellow_tail)
-        {
-            board_yellow_tail.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == nori)
-        {
-            board_nori.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == rice)
-        {
-            board_rice.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == avacado)
-        {
-            board_avacado.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == shrimp)
-        {
-            board_shrimp.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == crab)
-        {
-            board_crab.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == chilli_oil)
-        {
-            board_chilli_oil.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
-        else if (g == teriyaki)
-        {
-            board_teriyaki.GetComponent<SpriteRenderer>().sortingOrder = ingredient_count++;
-        }
+
+
     }
 }
