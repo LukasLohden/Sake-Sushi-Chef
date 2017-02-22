@@ -26,12 +26,15 @@ public class Board : MonoBehaviour {
     public GameObject onBoardIng;
     public GameObject ingObj;
 
+    private GameObject sushi;
     private GameObject[] ingredients;
     private const int NUM_INGREDIENTS = 9;
     private int ingredient_count;
 	// Use this for initialization
 	void Start () {
         ingredients = new GameObject[NUM_INGREDIENTS];
+        sushi = new GameObject();
+
         ingredient_count = 0;
         for (int i = 0; i < NUM_INGREDIENTS; i++){
             ingredients[i] = null;
@@ -46,28 +49,29 @@ public class Board : MonoBehaviour {
 
     public void showIngredient (GameObject g) {
         int num_child = ingObj.transform.childCount;
+        
         for(int i=0; i < num_child; i++)
         {
             //print(ingObj.transform.GetChild(i));
-            print("i= " + i);
-            print("g=" + g);
+            //print("i= " + (ingObj.transform.GetChild(i).gameObject == g));
+            //print("g=" + g);
             if(ingObj.transform.GetChild(i).gameObject == g)
             {
-                print("    in first if");
-                print("    IngCount=" + ingredient_count);
+                //print("    in first if");
+                //print("    IngCount=" + ingredient_count);
                 if (ingredient_count < NUM_INGREDIENTS)
                 {
-                    print("        in second if");
+                    //print("        in second if");
                     ingredients[ingredient_count] = (GameObject)Instantiate(g, gameObject.transform);
                     ingredients[ingredient_count].GetComponent<SpriteRenderer>().sortingOrder = ingredient_count + 2;
                     ingredients[ingredient_count].transform.position = gameObject.transform.position;
                     ingredient_count++;
-                    print("        " + ingredients);
+                    //print("        " + ingredients);
                 }
                 break;
             }
         }
-
+        
 
     }
 
