@@ -7,6 +7,7 @@ public class Ingredients : MonoBehaviour {
     private int cost_to_sell = 0;
     //private bool active = false;
     public GameObject cutting_board;
+	public GameObject sushi;
 	// Use this for initialization
 	void Start () {
        
@@ -19,6 +20,7 @@ public class Ingredients : MonoBehaviour {
     void OnMouseDown()
     {
         cutting_board.SendMessage("showIngredient", gameObject);
+		sushi.SendMessage ("addIngredient", gameObject.name);
     }
 
 }
