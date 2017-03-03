@@ -17,7 +17,7 @@ public class Board : MonoBehaviour {
 	
 	}
 
-    public void showIngredient (GameObject g) {
+    public void ShowIngredient (GameObject g) {
 
 		GameObject ingredient = (GameObject)Instantiate(g, gameObject.transform.position, new Quaternion());
 		ingredient.GetComponent<SpriteRenderer> ().sortingOrder = layerCount;
@@ -25,7 +25,7 @@ public class Board : MonoBehaviour {
 		++layerCount;
     }
 
-    public void clearBoard()
+    public void ClearBoard()
     {
 
 		foreach (GameObject clone in GameObject.FindGameObjectsWithTag("clone")) {

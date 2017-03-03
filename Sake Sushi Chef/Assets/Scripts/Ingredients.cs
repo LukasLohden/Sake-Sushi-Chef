@@ -22,8 +22,8 @@ public class Ingredients : MonoBehaviour {
     void OnMouseDown()
 	{
 		if (!hasCloned) {
-			cutting_board.SendMessage ("showIngredient", gameObject);
-			sushiSubmitButton.SendMessage ("addIngredient", gameObject.name);
+			cutting_board.SendMessage ("ShowIngredient", gameObject);
+			sushiSubmitButton.SendMessage ("AddIngredient", gameObject.name);
 			hasCloned = true;
 		}
 	}

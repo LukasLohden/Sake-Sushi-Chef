@@ -16,13 +16,19 @@ public class TrashCan : MonoBehaviour {
     {
 
     }
+
     void OnMouseDown()
     {
-        cutting_board.SendMessage("clearBoard");
-		sushiSubmitButton.SendMessage ("resetSushi");
+		Reset ();
+    }
+
+	void Reset()
+	{
+		cutting_board.SendMessage("ClearBoard");
+		sushiSubmitButton.SendMessage ("ResetSushi");
 		foreach( GameObject ingredient in GameObject.FindGameObjectsWithTag("ingredient"))
 		{
 			ingredient.SendMessage ("ResetSushi");
 		}
-    }
+	}
 }
