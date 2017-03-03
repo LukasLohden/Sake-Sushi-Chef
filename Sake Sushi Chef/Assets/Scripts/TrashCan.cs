@@ -4,7 +4,7 @@ using System.Collections;
 public class TrashCan : MonoBehaviour {
 
     public GameObject cutting_board;
-	public GameObject sushi;
+	public GameObject sushiSubmitButton;
     // Use this for initialization
     void Start()
     {
@@ -19,6 +19,10 @@ public class TrashCan : MonoBehaviour {
     void OnMouseDown()
     {
         cutting_board.SendMessage("clearBoard");
-		sushi.SendMessage ("resetSushi");
+		sushiSubmitButton.SendMessage ("resetSushi");
+		foreach( GameObject ingredient in GameObject.FindGameObjectsWithTag("ingredient"))
+		{
+			ingredient.SendMessage ("ResetSushi");
+		}
     }
 }

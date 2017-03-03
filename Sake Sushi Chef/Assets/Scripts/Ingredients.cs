@@ -7,7 +7,9 @@ public class Ingredients : MonoBehaviour {
     private int cost_to_sell = 0;
     //private bool active = false;
     public GameObject cutting_board;
-	public GameObject sushi;
+	public GameObject sushiSubmitButton;
+
+	private bool hasCloned;
 	// Use this for initialization
 	void Start () {
        
@@ -18,9 +20,16 @@ public class Ingredients : MonoBehaviour {
 	    
 	}
     void OnMouseDown()
-    {
-        cutting_board.SendMessage("showIngredient", gameObject);
-		sushi.SendMessage ("addIngredient", gameObject.name);
-    }
+	{
+		if (!hasCloned) {
+			cutting_board.SendMessage ("showIngredient", gameObject);
+			sushiSubmitButton.SendMessage ("addIngredient", gameObject.name);
+			hasCloned = true;
+		}
+	}
 
+	void ResetSushi()
+	{
+		hasCloned = false;
+	}
 }
